@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'flutter-chat-app-743e0.appspot.com',
     measurementId: 'G-G6FS1VZ8D2',
   );
+
 }
