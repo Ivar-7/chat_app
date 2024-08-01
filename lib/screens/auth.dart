@@ -7,15 +7,17 @@ class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  State<AuthScreen> createState() {
+    return _AuthScreenState();
+  }
 }
 
 class _AuthScreenState extends State<AuthScreen> {
   final _form = GlobalKey<FormState>();
 
   var _isLogin = true;
-  var _userEmail = '';
-  var _userPassword = '';
+  var _enteredEmail = '';
+  var _enteredPassword = '';
 
   void _submit() async {
     final isValid = _form.currentState!.validate();
@@ -24,27 +26,29 @@ class _AuthScreenState extends State<AuthScreen> {
       return;
     }
 
+    _form.currentState!.save();
+
     try {
       if (_isLogin) {
-        final userCredential = await _firebase.signInWithEmailAndPassword(
-            email: _userEmail, password: _userPassword);
+        final userCredentials = await _firebase.signInWithEmailAndPassword(
+            email: _enteredEmail, password: _enteredPassword);
+        // ignore: avoid_print
+        print(userCredentials);
       } else {
-        final userCredential = await _firebase.createUserWithEmailAndPassword(
-          email: _userEmail,
-          password: _userPassword,
-        );
+        final userCredentials = await _firebase.createUserWithEmailAndPassword(
+            email: _enteredEmail, password: _enteredPassword);
+        // ignore: avoid_print
+        print(userCredentials);
       }
-    } on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (error) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).clearSnackBars();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(e.message ?? 'Authentication failed.'),
+          content: Text(error.message ?? 'Authentication failed.'),
         ),
       );
     }
-
-    _form.currentState!.save();
   }
 
   @override
@@ -78,8 +82,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         children: [
                           TextFormField(
                             decoration: const InputDecoration(
-                              labelText: 'Email Address',
-                            ),
+                                labelText: 'Email Address'),
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             textCapitalization: TextCapitalization.none,
@@ -89,16 +92,16 @@ class _AuthScreenState extends State<AuthScreen> {
                                   !value.contains('@')) {
                                 return 'Please enter a valid email address.';
                               }
+
                               return null;
                             },
                             onSaved: (value) {
-                              _userEmail = value!;
+                              _enteredEmail = value!;
                             },
                           ),
                           TextFormField(
-                            decoration: const InputDecoration(
-                              labelText: 'Password',
-                            ),
+                            decoration:
+                                const InputDecoration(labelText: 'Password'),
                             obscureText: true,
                             validator: (value) {
                               if (value == null || value.trim().length < 6) {
@@ -107,7 +110,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               return null;
                             },
                             onSaved: (value) {
-                              _userPassword = value!;
+                              _enteredPassword = value!;
                             },
                           ),
                           const SizedBox(height: 12),
@@ -121,14 +124,15 @@ class _AuthScreenState extends State<AuthScreen> {
                             child: Text(_isLogin ? 'Login' : 'Signup'),
                           ),
                           TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  _isLogin = !_isLogin;
-                                });
-                              },
-                              child: Text(_isLogin
-                                  ? 'Create an account'
-                                  : 'Already have an account? Login!'))
+                            onPressed: () {
+                              setState(() {
+                                _isLogin = !_isLogin;
+                              });
+                            },
+                            child: Text(_isLogin
+                                ? 'Create an account'
+                                : 'I already have an account'),
+                          ),
                         ],
                       ),
                     ),
