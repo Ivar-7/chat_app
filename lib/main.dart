@@ -9,9 +9,9 @@ import 'package:chat_app/screens/chat.dart';
 import 'package:chat_app/screens/auth.dart';
 
 
-void main() async {
-  await dotenv.load(fileName: ".env");
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
