@@ -3,7 +3,6 @@
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
@@ -41,54 +40,50 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static FirebaseOptions get web => FirebaseOptions(
-        apiKey: dotenv.env['FLUTTER_FIREBASE_WEB_API_KEY']!,
-        appId: dotenv.env['FLUTTER_FIREBASE_WEB_APP_ID']!,
-        messagingSenderId:
-            dotenv.env['FLUTTER_FIREBASE_WEB_MESSAGING_SENDER_ID']!,
-        projectId: dotenv.env['FLUTTER_FIREBASE_WEB_PROJECT_ID']!,
-        authDomain: dotenv.env['FLUTTER_FIREBASE_WEB_AUTH_DOMAIN']!,
-        storageBucket: dotenv.env['FLUTTER_FIREBASE_WEB_STORAGE_BUCKET']!,
-        measurementId: dotenv.env['FLUTTER_FIREBASE_WEB_MEASUREMENT_ID']!,
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCLT66zLebqUA2rHClCHaMsM4sJ1S_MeRA',
+    appId: '1:945077109618:web:9b2d82dc3de72efcb5d3eb',
+    messagingSenderId: '945077109618',
+    projectId: 'flutter-chat-app-743e0',
+    authDomain: 'flutter-chat-app-743e0.firebaseapp.com',
+    storageBucket: 'flutter-chat-app-743e0.appspot.com',
+    measurementId: 'G-8QK7KXXNCS',
   );
 
-  static FirebaseOptions get android => FirebaseOptions(
-        apiKey: dotenv.env['FLUTTER_FIREBASE_ANDROID_API_KEY']!,
-        appId: dotenv.env['FLUTTER_FIREBASE_ANDROID_APP_ID']!,
-        messagingSenderId:
-            dotenv.env['FLUTTER_FIREBASE_ANDROID_MESSAGING_SENDER_ID']!,
-        projectId: dotenv.env['FLUTTER_FIREBASE_ANDROID_PROJECT_ID']!,
-        storageBucket: dotenv.env['FLUTTER_FIREBASE_ANDROID_STORAGE_BUCKET']!,
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyD1GTyTNimrGoVCFHWBvWWI_vZUuw0eQLY',
+    appId: '1:945077109618:android:e7448dbe371def3cb5d3eb',
+    messagingSenderId: '945077109618',
+    projectId: 'flutter-chat-app-743e0',
+    storageBucket: 'flutter-chat-app-743e0.appspot.com',
   );
 
-  static FirebaseOptions get ios => FirebaseOptions(
-        apiKey: dotenv.env['FLUTTER_FIREBASE_IOS_API_KEY']!,
-        appId: dotenv.env['FLUTTER_FIREBASE_IOS_APP_ID']!,
-        messagingSenderId:
-            dotenv.env['FLUTTER_FIREBASE_IOS_MESSAGING_SENDER_ID']!,
-        projectId: dotenv.env['FLUTTER_FIREBASE_IOS_PROJECT_ID']!,
-        storageBucket: dotenv.env['FLUTTER_FIREBASE_IOS_STORAGE_BUCKET']!,
-        iosBundleId: dotenv.env['FLUTTER_FIREBASE_IOS_BUNDLE_ID']!,
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyArxn_ISIvHXEpViv_pIr_WKowReUzaEik',
+    appId: '1:945077109618:ios:08b5de630ce89e93b5d3eb',
+    messagingSenderId: '945077109618',
+    projectId: 'flutter-chat-app-743e0',
+    storageBucket: 'flutter-chat-app-743e0.appspot.com',
+    iosBundleId: 'com.example.chatApp',
   );
 
-  static FirebaseOptions get macos => FirebaseOptions(
-        apiKey: dotenv.env['FLUTTER_FIREBASE_MACOS_API_KEY']!,
-        appId: dotenv.env['FLUTTER_FIREBASE_MACOS_APP_ID']!,
-        messagingSenderId:
-            dotenv.env['FLUTTER_FIREBASE_MACOS_MESSAGING_SENDER_ID']!,
-        projectId: dotenv.env['FLUTTER_FIREBASE_MACOS_PROJECT_ID']!,
-        storageBucket: dotenv.env['FLUTTER_FIREBASE_MACOS_STORAGE_BUCKET']!,
-        iosBundleId: dotenv.env['FLUTTER_FIREBASE_MACOS_BUNDLE_ID']!,
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyArxn_ISIvHXEpViv_pIr_WKowReUzaEik',
+    appId: '1:945077109618:ios:08b5de630ce89e93b5d3eb',
+    messagingSenderId: '945077109618',
+    projectId: 'flutter-chat-app-743e0',
+    storageBucket: 'flutter-chat-app-743e0.appspot.com',
+    iosBundleId: 'com.example.chatApp',
   );
 
-  static FirebaseOptions get windows => FirebaseOptions(
-        apiKey: dotenv.env['FLUTTER_FIREBASE_WINDOWS_API_KEY']!,
-        appId: dotenv.env['FLUTTER_FIREBASE_WINDOWS_APP_ID']!,
-        messagingSenderId:
-            dotenv.env['FLUTTER_FIREBASE_WINDOWS_MESSAGING_SENDER_ID']!,
-        projectId: dotenv.env['FLUTTER_FIREBASE_WINDOWS_PROJECT_ID']!,
-        authDomain: dotenv.env['FLUTTER_FIREBASE_WINDOWS_AUTH_DOMAIN']!,
-        storageBucket: dotenv.env['FLUTTER_FIREBASE_WINDOWS_STORAGE_BUCKET']!,
-        measurementId: dotenv.env['FLUTTER_FIREBASE_WINDOWS_MEASUREMENT_ID']!,
-      );
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCLT66zLebqUA2rHClCHaMsM4sJ1S_MeRA',
+    appId: '1:945077109618:web:f3b8b8d4ac234c03b5d3eb',
+    messagingSenderId: '945077109618',
+    projectId: 'flutter-chat-app-743e0',
+    authDomain: 'flutter-chat-app-743e0.firebaseapp.com',
+    storageBucket: 'flutter-chat-app-743e0.appspot.com',
+    measurementId: 'G-G6FS1VZ8D2',
+  );
+
 }
