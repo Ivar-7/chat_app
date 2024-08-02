@@ -9,7 +9,7 @@ import 'package:chat_app/screens/chat.dart';
 import 'package:chat_app/screens/auth.dart';
 
 
-Future<void> main() async {
+void main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
